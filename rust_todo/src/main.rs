@@ -12,11 +12,11 @@ fn main() {
     let mut id_counter: u32 = 1;
 
     loop {
-        println!("Choose an option:");
-        println!("1 - Add a new todo");
-        println!("2 - Remove a todo");
-        println!("3 - List todos");
-        println!("4 - Quit");
+        println!("메뉴 번호를 선택해주세요:");
+        println!("1 - 할 일 추가");
+        println!("2 - 할 일 제거");
+        println!("3 - 할 일 목록");
+        println!("4 - 종료");
 
         let mut choice = String::new();
         io::stdin()
@@ -33,12 +33,12 @@ fn main() {
                 let mut title = String::new();
                 let mut content = String::new();
 
-                println!("Enter the title of the todo:");
+                println!("제목을 입력해주세요:");
                 io::stdin()
                     .read_line(&mut title)
                     .expect("Failed to read input");
 
-                println!("Enter the content of the todo:");
+                println!("내용을 입력해주세요:");
                 io::stdin()
                     .read_line(&mut content)
                     .expect("Failed to read input");
@@ -50,12 +50,12 @@ fn main() {
                         content: content.trim().to_string(),
                     },
                 );
-                println!("Todo added with ID: {}", id_counter);
+                println!("할일이 추가 되었습니다. Todo ID : {}\n", id_counter);
 
                 id_counter += 1;
             }
             2 => {
-                println!("Enter the ID of the todo to delete:");
+                println!("삭제할 Todo ID를 입력해주세요:");
                 let mut id_input = String::new();
                 io::stdin()
                     .read_line(&mut id_input)
@@ -70,9 +70,9 @@ fn main() {
                 };
 
                 if todos.remove(&id_input).is_some() {
-                    println!("Todo with ID {} deleted", id_input);
+                    println!("Todo ID {}번을 삭제했습니다.", id_input);
                 } else {
-                    println!("No todo found with ID {}", id_input);
+                    println!("Todo ID {}번을 찾을 수 없습니다.", id_input);
                 }
             }
             3 => {
